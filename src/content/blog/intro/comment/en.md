@@ -3,7 +3,7 @@ title: Deploying a Comment System
 pubDate: 2026-01-08
 description: Website Configuration
 image: ""
-draft: false
+draft: true
 slugId: momo/intro/comment
 ---
 

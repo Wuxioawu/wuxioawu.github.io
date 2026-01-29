@@ -3,7 +3,7 @@ title: Article Publishing Guide
 pubDate: 2025-09-29
 description: Website Configuration
 image: ""
-draft: false
+draft: true
 slugId: momo/intro/publish
 ---
 
@@ -30,7 +30,7 @@ title: Article Title
 pubDate: 2025-01-01
 description: Brief article description
 image: ""
-draft: false
+draft: true
 slugId: intro/publish
 ---
 ```

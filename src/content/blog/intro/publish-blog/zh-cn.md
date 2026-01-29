@@ -3,7 +3,7 @@ title: 文章发布指南
 pubDate: 2025-09-29
 description: 网站配置
 image: ""
-draft: false
+draft: true
 slugId: momo/intro/publish
 ---
 
@@ -31,7 +31,7 @@ title: 文章标题
 pubDate: 2025-01-01
 description: 文章简短描述
 image: ""
-draft: false
+draft: true
 slugId: intro/publish
 ---
 ```
