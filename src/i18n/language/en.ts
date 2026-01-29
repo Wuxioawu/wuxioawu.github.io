@@ -9,7 +9,7 @@ const translation: Translation = {
     },
     cover: {
         title: {
-            home: "Welcome to Momo's Blog",
+            home: "Welcome to Paul Warren's Blog",
             archive: "Archive",
             about: "About",
             friends: "Friends",
@@ -18,7 +18,7 @@ const translation: Translation = {
         subTitle: {
             home: "Life is colorful!",
             archive: "Total of {count} articles",
-            about: "A minimalist blog template",
+            about: "Longlife Learner",
             friends: "Interesting Souls",
             page404: "Congratulations on finding a new world, this world is still under construction, please wait a bit longer."
         }

@@ -74,13 +74,13 @@ const aboutPage = getRelativeLocaleUrl(currentLang, "/about/");
               {t("header.about")}
           </a>
           <!-- 友链链接 -->
-          <a href={ friendsPage } class={`transition-colors rounded-lg px-3 py-1 mx-1 hover:text-current ${
+          <!-- <a href={ friendsPage } class={`transition-colors rounded-lg px-3 py-1 mx-1 hover:text-current ${
               Astro.url.pathname === friendsPage 
                   ? 'bg-[var(--button-hover-color)]' 
                   : 'hover:bg-[var(--button-hover-color)]'
               }`}>
               {t("header.friends")}
-          </a>
+          </a> -->
             <!-- <a href={ indexPage } class="transition-colors hover:bg-[var(--button-hover-color)] rounded-lg px-3 py-1 mx-1 hover:text-current">{t("header.home")}</a>
             <a href={ archivesPage } class="transition-colors hover:bg-[var(--button-hover-color)] rounded-lg px-3 py-1 mx-1 hover:text-current">{t("header.archive")}</a>
             <a href={ aboutPage } class="transition-colors hover:bg-[var(--button-hover-color)] rounded-lg px-3 py-1 mx-1 hover:text-current">{t("header.about")}</a>

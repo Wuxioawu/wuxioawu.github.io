@@ -1,59 +1,43 @@
-## ✨ 特性
+# 你好，我是 Paul
 
-* 极简设计
-* 支持深色模式切换，并自动跟随系统
-* 支持文章搜索功能（pagefind）
-* 国际化（i18n）
+欢迎来到这里。
 
-## 💻 环境要求
+一个写代码的人。平时主要在 **分布式系统** 和 **AI 应用开发** 这一块折腾，也会做一些前后端的东西。
 
-* Node.js （建议版本大于22.x）
-* pnpm （使用 `npm install -g pnpm` 安装）
+比起“技术栈”本身，我更在意系统为什么这样设计、代码为什么要这样写，以及这些东西能不能真的让事情变得更好一点。
 
-## 🚀 快速开始
+这个博客不是作品集，也不完全是技术博客。  
 
-1. 克隆本项目
-    ```bash
-    git clone https://github.com/Motues/Momo.git
-    cd Momo
-    ```
-2. 运行 `pnpm install` 安装依赖
-3. 运行 `pnpm dev` 启动开发服务器
+它更像是一个长期存在的笔记本，用来记录我在学习、工作和生活中的一些想法、踩过的坑，以及偶尔冒出来的灵感。
 
-## 🔧 配置
+![Paul 的头像](./personal.png "Paul")
 
-参考[配置指南](./doc/config_zh-ch.md)，详细信息可以访问[Momo](https://momo.motues.top/)，阅读对应文章获取详细信息。
+---
 
-## ⚡ 指令
+## 我在关注什么
 
-以下所有的指令可以在根目录下面执行
+- **分布式系统**  
+  对高并发、系统稳定性、架构演进这些问题比较感兴趣，喜欢拆解复杂系统背后的设计取舍。
 
-| 指令 | 作用 |
-| --- | --- |
-| `pnpm instal` | 安装依赖 |
-| `pnpm dev` | 启动本地服务器，运行在 `http://localhost:4321` |
-| `pnpm build` | 构建发布版本到 `./dist` 目录下 |
-| `pnpm preview` | 预览构建后的发布版本 |
-| `pnpm astro ...` | 运行 `astro` 命令，例如 `astro add` |
-| `pnpm new <path> <lang>` | 创建新文章，例如 `pnpm new docs/test.md zh-cn`，语言可以省略，默认为`zh-cn` |
+- **AI 应用与大模型**  
+  关注大模型如何真正落地到产品中，比如 RAG、Agent、工具调用，以及它们对软件交互方式的改变。
 
+- **全栈开发**  
+  不太想只做某一层。后端、前端、基础设施都会碰，目标是把事情完整地做出来，而不是只完成自己那一小块。
 
-## 📜 TODO
+---
 
-- [x] 添加友链功能
-- [x] 添加备忘录功能
-- [x] 添加搜索功能（使用pagefind，还需要处理中文匹配问题）
-- [ ] 优化Markdown样式，如~~公式~~，代码块，~~特殊提示~~
-- [x] 设置文章分页
-- [x] 添加目录
-- [x] 添加RSS
-- [ ] 支持文章分类
-- [ ] 其他小功能，比如~~回到顶部~~，预计阅读时间等
-- [x] 评论功能（支持零服务器部署，[Backend](https://github.com/Motues/Momo-Backend)）
-- [x] 国际化（i18n）
+## 常用工具（不定期变化）
 
-## 📚 参考
+- **Backend**：Node.js、Go、PostgreSQL、Redis  
+- **Frontend**：React、Astro、Tailwind CSS  
+- **AI 相关**：LangChain、OpenAI API、LlamaIndex  
+- **基础设施**：Docker、Kubernetes、GitHub Actions  
+---
 
-* [Astro](https://astro.build/)
-* [Fuwari](https://github.com/saicaca/fuwari)
-* [Tyndall](https://github.com/moyuin-aka/tyndall-public)
+## 关于这个博客
+
+- 技术学习笔记（不一定写得很“教程”）
+- 对某些系统设计或技术趋势的思考
+- 生活中的一些记录和复盘
+- 以及一些暂时还没想清楚的问题

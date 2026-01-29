@@ -7,7 +7,7 @@ import type {
 import type { FriendLink } from "./types/friend"
 
 export const siteConfig: SiteConfig = {
-    title: "Momo",
+    title: "Paul Warren",
     subTitle: "Blog",
 
     favicon: "/favicon/favicon.ico", // Path of the favicon, relative to the /public directory
@@ -25,13 +25,12 @@ export const siteConfig: SiteConfig = {
         backendUrl: "https://api-momo.motues.top" // Backend URL for comments
     }
 }
-
+// bottom the start time
 export const profileConfig: ProfileConfig = {
     avatar: "assets/Motues.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-    name: "Motues",
+    name: "Paul Warren",
     description: "Life is colorful!",
-    indexPage: "https://motues.top",
-    startYear: 2024,
+    startYear: 2025,
 }
 
 export const licenseConfig: LicenseConfig = {

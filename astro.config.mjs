@@ -21,7 +21,7 @@ import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://momo.motues.top', // Root URL of site
+  site: 'https://Wuxioawu.github.io', // Root URL of site
   i18n: {
     locales: ['zh-cn', 'en'],
     defaultLocale: 'zh-cn',

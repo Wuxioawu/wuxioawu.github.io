@@ -238,8 +238,7 @@ int main() {
 ```
 
 显示如下:  
-![Motues](./Motues.png "这是我的头像")
-<!-- <img src="./Motues.png" alt="Motues" title="这是我的头像" width="256" height="256"> -->
+<img src="./Motues.png" alt="Motues" title="这是我的头像" width="256" height="256">
 
 ## 表格
 
