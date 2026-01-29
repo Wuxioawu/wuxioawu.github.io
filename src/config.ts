@@ -21,7 +21,7 @@ export const siteConfig: SiteConfig = {
         enable: true // Whether to enable blog navigation in the blog footer
     },
     comments: {
-        enable: true, // Whether to enable comments
+        enable: false, // Whether to enable comments
         backendUrl: "https://api-momo.motues.top" // Backend URL for comments
     }
 }

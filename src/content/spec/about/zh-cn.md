@@ -12,7 +12,6 @@
 
 ![Paul 的头像](./personal.png "Paul")
 
----
 
 ## 我在关注什么
 
@@ -25,7 +24,6 @@
 - **全栈开发**  
   不太想只做某一层。后端、前端、基础设施都会碰，目标是把事情完整地做出来，而不是只完成自己那一小块。
 
----
 
 ## 常用工具（不定期变化）
 
@@ -33,7 +31,6 @@
 - **Frontend**：React、Astro、Tailwind CSS  
 - **AI 相关**：LangChain、OpenAI API、LlamaIndex  
 - **基础设施**：Docker、Kubernetes、GitHub Actions  
----
 
 ## 关于这个博客
 
@@ -41,3 +38,8 @@
 - 对某些系统设计或技术趋势的思考
 - 生活中的一些记录和复盘
 - 以及一些暂时还没想清楚的问题
+
+
+## 联系方式
+- GitHub：https://github.com/Wuxioawu
+- Email：peng.wu2@ucdconnect.ie

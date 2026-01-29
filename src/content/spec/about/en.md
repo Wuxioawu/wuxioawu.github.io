@@ -12,8 +12,6 @@ It’s more like a long-term notebook — a place to record what I’m learning,
 
 ![Paul's avatar](./personal.png "Paul")
 
----
-
 ## What I’m currently focused on
 
 - **Distributed Systems**  
@@ -25,7 +23,6 @@ It’s more like a long-term notebook — a place to record what I’m learning,
 - **Full-Stack Development**  
   I don’t like being confined to a single layer. Backend, frontend, and infrastructure all matter if you want to build something complete, not just your own small part.
 
----
 
 ## Tools I often use (and change over time)
 
@@ -36,7 +33,6 @@ It’s more like a long-term notebook — a place to record what I’m learning,
 
 Tools come and go. The problems and thinking tend to stay.
 
----
 
 ## About this blog
 
@@ -49,3 +45,7 @@ Here you’ll find:
 
 If something here happens to be useful to you, that’s great.  
 If not, at least it’s honest to me.
+
+## Contact
+- **GitHub**: https://github.com/Wuxioawu  
+- **Email**: peng.wu2@ucdconnect.ie
