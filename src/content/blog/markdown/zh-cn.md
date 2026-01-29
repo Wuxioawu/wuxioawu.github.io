@@ -3,7 +3,7 @@ title: Markdown
 pubDate: 2025-09-21
 description: 测试Markdown的基本功能
 image: "./cover.jpg"
-draft: false
+draft: true
 slugId: momo/markdown
 ---
 
@@ -238,7 +238,7 @@ int main() {
 ```
 
 显示如下:  
-<img src="./Motues.png" alt="Motues" title="这是我的头像" width="256" height="256">
+![Motues](./Motues.png "这是我的头像")
 
 ## 表格
 

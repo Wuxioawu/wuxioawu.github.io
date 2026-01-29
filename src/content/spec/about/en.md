@@ -1,58 +1,51 @@
+# Hi, I'm Paul
 
-## ✨ Features
+Welcome.
 
-* Minimalist design
-* Supports dark mode switching and automatically follows system settings
-* Supports article search functionality (pagefind)
-* Internationalization (i18n)
+I’m someone who writes code. Most of my time is spent exploring **distributed systems** and **AI application development**, and I also work across the stack when needed.
 
-## 💻 Environment Requirements
+More than the tools themselves, I care about *why* a system is designed a certain way, *why* code is written the way it is, and whether these choices actually make things better in the real world.
 
-* Node.js (recommended version above 20.x)
-* pnpm (install using `npm install -g pnpm`)
+This blog is not a portfolio, and it’s not purely a technical blog either.
 
-## 🚀 Quick Start
+It’s more like a long-term notebook — a place to record what I’m learning, what I’m working on, mistakes I’ve made, and thoughts that show up along the way.
 
-1. Clone this project
-    ```bash
-    git clone https://github.com/Motues/Momo.git
-    cd Momo
-    ```
-2. Run `pnpm install` to install dependencies
-3. Run `pnpm dev` to start the development server
+![Paul's avatar](./personal.png "Paul")
 
-## 🔧 Configuration
+---
 
-Refer to the [Configuration Guide](/en/blog/intro/config)
+## What I’m currently focused on
 
-## ⚡ Commands
+- **Distributed Systems**  
+  Interested in high-concurrency systems, reliability, and how architectures evolve over time. I enjoy breaking down the trade-offs behind complex system designs.
 
-All commands below can be executed in the root directory
+- **AI Applications & Large Language Models**  
+  Exploring how LLMs are applied in real products — including RAG, agents, and tool use — and how they change the way we interact with software.
 
-| Command | Function |
-| --- | --- |
-| `pnpm install` | Install dependencies |
-| `pnpm dev` | Start local server at `http://localhost:4321` |
-| `pnpm build` | Build release version to `./dist` directory |
-| `pnpm preview` | Preview built release version |
-| `pnpm astro ...` | Run `astro` commands, e.g., `astro add` |
-| `pnpm new <path> <lang>` | Create a new article, e.g., `pnpm new docs/test.md zh-cn`, the language can be omitted, defaulting to `zh-cn` |
+- **Full-Stack Development**  
+  I don’t like being confined to a single layer. Backend, frontend, and infrastructure all matter if you want to build something complete, not just your own small part.
 
-## 📜 TODO
+---
 
-- [x] Add friend links feature
-- [x] Add memo feature
-- [x] Add search functionality (using pagefind, requires handling Chinese matching)
-- [ ] Optimize Markdown styles, e.g., ~~formulas~~, code blocks, ~~special prompts~~
-- [x] Implement article pagination
-- [x] Add table of contents
-- [x] Add RSS feed
-- [ ] Other minor features, e.g., ~~back to top~~, estimated reading time
-- [x] Support comment（serverless deployment, [Backend](https://github.com/Motues/Momo-Backend)）
-- [x] Internationalization (i18n)
+## Tools I often use (and change over time)
 
-## 📚 References
+- **Backend**: Node.js, Go, PostgreSQL, Redis  
+- **Frontend**: React, Astro, Tailwind CSS  
+- **AI**: LangChain, OpenAI API, LlamaIndex  
+- **Infrastructure**: Docker, Kubernetes, GitHub Actions  
 
-* [Astro](https://astro.build/)
-* [Fuwari](https://github.com/saicaca/fuwari)
-* [Tyndall](https://github.com/moyuin-aka/tyndall-public)
+Tools come and go. The problems and thinking tend to stay.
+
+---
+
+## About this blog
+
+Here you’ll find:
+
+- Technical notes (not always written as tutorials)
+- Thoughts on system design and technology trends
+- Notes from life and personal reflections
+- Questions I haven’t fully figured out yet
+
+If something here happens to be useful to you, that’s great.  
+If not, at least it’s honest to me.
