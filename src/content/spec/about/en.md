@@ -1,4 +1,4 @@
-# Hi, I'm Paul
+# Hi, I am Paul
 
 Welcome.
 
