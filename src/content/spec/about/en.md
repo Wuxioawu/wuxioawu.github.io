@@ -8,7 +8,7 @@ More than the tools themselves, I care about *why* a system is designed a certai
 
 This blog is not a portfolio, and it’s not purely a technical blog either.
 
-It’s more like a long-term notebook — a place to record what I’m learning, what I’m working on, mistakes I’ve made, and thoughts that show up along the way.
+It’s more like a long-term notebook a place to record what I’m learning, what I’m working on, mistakes I’ve made, and thoughts that show up along the way.
 
 ![Paul's avatar](./personal.png "Paul")
 
@@ -18,7 +18,7 @@ It’s more like a long-term notebook — a place to record what I’m learning,
   Interested in high-concurrency systems, reliability, and how architectures evolve over time. I enjoy breaking down the trade-offs behind complex system designs.
 
 - **AI Applications & Large Language Models**  
-  Exploring how LLMs are applied in real products — including RAG, agents, and tool use — and how they change the way we interact with software.
+  Exploring how LLMs are applied in real products including RAG, agents, and tool use and how they change the way we interact with software.
 
 - **Full-Stack Development**  
   I don’t like being confined to a single layer. Backend, frontend, and infrastructure all matter if you want to build something complete, not just your own small part.
