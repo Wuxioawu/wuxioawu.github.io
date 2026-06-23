@@ -1,6 +1,6 @@
 ---
 title: "CDN(内容分发网络)"
-pubDate: 2026-03-23
+pubDate: 2026-06-23
 description: 关于 CDN 的基础认识
 draft: false
 slugId: tech/260623
