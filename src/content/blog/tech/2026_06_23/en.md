@@ -1,6 +1,6 @@
 ---
 title: "CDN (Content Delivery Network)"
-pubDate: 2026-03-23
+pubDate: 2026-06-23
 description: Basic View about the CDN
 draft: false
 slugId: tech/260623

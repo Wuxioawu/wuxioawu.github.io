@@ -23,8 +23,8 @@ import svelte from "@astrojs/svelte";
 export default defineConfig({
   site: 'https://Wuxioawu.github.io', // Root URL of site
   i18n: {
-    locales: ['zh-cn', 'en'],
-    defaultLocale: 'zh-cn',
+    locales: ['en', 'zh-cn'],
+    defaultLocale: 'en',
     routing: {
       prefixDefaultLocale: false,
       redirectToDefaultLocale: false
