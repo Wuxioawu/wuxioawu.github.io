@@ -1,147 +1,302 @@
 ---
-title: "CDN (Content Delivery Network)"
-pubDate: 2026-06-23
-description: Basic View about the CDN
+title: "How to Build Solid CS Fundamentals"
+pubDate: 2026-07-20
+description: A direct, structured roadmap to master computer science fundamentals as a software engineer
 draft: false
-slugId: tech/260623
+slugId: tech/260720
 ---
 
-# What Is a CDN? A Practical Guide (with Provider Comparison)
+# Computer Science Fundamentals Roadmap (8–12 Weeks)
 
-A **CDN (Content Delivery Network)** is a geographically distributed network of servers that caches content close to users. Instead of every request traveling all the way back to your origin server, the CDN serves a cached copy from an **edge server** near the user.
-
-> **Analogy:** Think of your origin server as a central warehouse and the edge servers as local convenience stores. Rather than everyone driving across the country to the warehouse, they grab what they need from the nearest store.
-
-If you want the official explanations, each major provider has a solid write-up:
-
-- [Cloudflare — What is a CDN?](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/)
-- [AWS — What is a CDN?](https://aws.amazon.com/what-is/cdn/)
-- [Akamai — What is a CDN?](https://www.akamai.com/glossary/what-is-a-cdn)
-- [Fastly — What is a CDN?](https://www.fastly.com/learning/cdn/what-is-a-cdn)
-- [Imperva — What is a CDN & How It Works](https://www.imperva.com/learn/performance/what-is-cdn-how-it-works/)
-- [IBM — Content Delivery Networks](https://www.ibm.com/think/topics/content-delivery-networks)
+> **Goal**
+>
+> Fill the gaps in operating systems, computer networking, databases, and distributed systems — building a solid foundation for AI infra, backend engineering, and system design.
+>
+> **How to study**
+>
+> - 1–2 hours per day
+> - Video courses first
+> - For every concept you learn, connect it to a real-world system (Redis, Kafka, Kubernetes, ChatGPT, etc.)
 
 ---
 
-## Why Use a CDN? (The Problems It Solves)
+## Phase 1: Operating Systems (2–3 weeks)
 
-A CDN is not just "make the site faster." It attacks four distinct problems:
+### ⭐ Berkeley CS162 (Top pick)
 
-- **Lower latency.** Content travels a shorter physical distance, so round-trip time (RTT) drops. A user in Tokyo hits a Tokyo edge instead of a server in Virginia.
-- **Reduced origin load.** Every cache _hit_ never reaches your origin. Your backend handles a fraction of the traffic, which means fewer servers and less scaling pressure.
-- **Bandwidth cost savings.** Offloading traffic to the edge reduces expensive origin egress. For media-heavy sites this is often the biggest line-item saving.
-- **Availability & resilience.** The edge can keep serving cached content even when the origin is down, and it absorbs traffic spikes (flash sales, viral posts) that would otherwise overwhelm the backend.
-- **Security.** Most CDNs double as a security layer: DDoS mitigation, a Web Application Firewall (WAF), bot management, and TLS termination at the edge.
+Search on YouTube:
 
----
+```
+CS162 Operating Systems Berkeley
+```
 
-## How a CDN Works
+**Topics:**
 
-The whole system rests on a few core concepts:
+- Processes and threads
+- CPU scheduling
+- Synchronization
+- Virtual memory
+- File systems
 
-- **Edge servers / PoPs (Points of Presence)** — the cache nodes spread across the globe.
-- **Cache hit vs. cache miss** — a _hit_ is served from the edge; a _miss_ forces a trip to the origin.
-- **Cache key, TTL, and `Cache-Control`** — what identifies a cached object, and how long it stays valid.
-- **Cache invalidation / purge** — how you force the edge to drop stale content when you ship an update.
+**Questions you should be able to answer afterwards:**
 
-The request lifecycle for a typical pull-based CDN:
+- How does a program actually run?
+- Why are threads lighter than processes?
+- Why is a context switch expensive?
+- Why do we need locks, and how do deadlocks happen?
+- How does virtual memory work?
 
-1. A user requests an asset (e.g. `/logo.png`).
-2. The request is routed to the **nearest edge** (via Anycast IP or DNS — see below).
-3. The edge checks its cache for that key.
-4. **Cache hit** → serve immediately. **Cache miss** → fetch from the origin, store a copy, then serve it.
-5. Every subsequent request within the TTL is served straight from the edge — no origin trip.
+### ⭐ MIT 6.S081 (Advanced)
 
-The single most important metric here is **cache hit ratio**: the percentage of requests served from the edge. A high hit ratio is the entire point of a CDN.
+Search on YouTube:
 
----
+```
+MIT 6.S081 Operating System Engineering
+```
 
-## Different Implementation Approaches
+**Topics:**
 
-CDNs aren't all built the same way. There are three axes worth understanding.
+- The xv6 teaching kernel
+- Kernel and system calls
+- Memory management
+- The scheduler
 
-### 1. Pull CDN vs. Push CDN
+**Best for you if:**
 
-| Approach     | How it works                                                                                                         | Best for                                                                                                             |
-| ------------ | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| **Pull CDN** | You don't pre-upload anything. The edge _pulls_ from the origin on the first cache miss, then caches it per the TTL. | Sites with frequently changing content; the default for Cloudflare and CloudFront. Easiest to set up.                |
-| **Push CDN** | You proactively _upload_ content into the CDN's storage and control exactly what's stored and when.                  | Large static files, infrequently changing assets, or low-traffic sites where you want to avoid origin hits entirely. |
-
-### 2. Request Routing: Anycast vs. DNS-based
-
-- **Anycast** — the same IP address is announced from many locations, and BGP routes the user to the nearest PoP automatically. Used by Cloudflare and Fastly. Simple, with fast failover.
-- **DNS-based (GeoDNS)** — the DNS resolver hands back a different edge IP depending on the user's location. This is the traditional Akamai-style approach and gives very fine-grained routing control.
-
-### 3. Static Caching vs. Edge Compute
-
-- **Traditional CDN** caches _static_ assets — images, CSS, JS, video, fonts.
-- **Edge compute platforms** let you run _code_ at the edge to personalize or transform responses near the user. Examples: Cloudflare Workers, AWS Lambda@Edge / CloudFront Functions, Fastly Compute, and Vercel Edge Functions. This blurs the line between "CDN" and "application platform" — you can do auth, A/B testing, or even render pages at the edge.
+- You want to understand the Linux kernel
+- You're aiming for AI infra
+- You want to work on low-level systems
 
 ---
 
-## Real-World Case Studies: How Top Companies Cache
+## Phase 2: Computer Networking (2 weeks)
 
-Theory clicks faster next to real systems. These three cases climb a ladder — from **building your own CDN**, to **a provider's internals**, to **caching baked into an application framework**. The same vocabulary (hit ratio, push vs. pull, tiered caching, stale-while-revalidate) reappears at every level.
+### ⭐ Stanford CS144 (Highly recommended)
 
-### Netflix — Open Connect: a custom CDN with proactive caching
+Search on YouTube:
 
-Netflix didn't rent a CDN; it built one. **Open Connect** places custom servers called OCAs (Open Connect Appliances) _inside_ ISP data centers, so video travels the shortest possible hop to the viewer. Crucially, it's a **push** model: popular titles are pre-loaded onto thousands of OCAs during off-peak hours, so the content is already there before anyone hits play. The payoff is that roughly **95% of traffic is served straight from the edge** — never touching Netflix's AWS backend — at cache hit rates near **98%**.
+```
+Stanford CS144 Computer Networking
+```
 
-The engineering goes all the way down to the OS: zero-copy delivery (FreeBSD's `sendfile()`) ships bytes from disk to NIC without bouncing through user space, and TLS encryption is offloaded to the network card. For live streams, Netflix fronts its origin with a Memcached-based write-through cache (EVCache) to survive "origin storms" when many edges fill at once.
+**Key topics:**
 
-- Netflix TechBlog — [https://netflixtechblog.com](https://netflixtechblog.com/)
-- Open Connect — [https://openconnect.netflix.com](https://openconnect.netflix.com/)
+- TCP and IP
+- DNS and routing
+- Congestion control
+- HTTP
 
-### Cloudflare — Pingora + Tiered Cache: inside a CDN provider
+**Questions you should be able to answer afterwards:**
 
-Cloudflare openly documents how its own cache works, which is rare and worth reading. Two pieces stand out:
+- Why does TCP need a three-way handshake but a four-way teardown?
+- Why does the TIME_WAIT state exist?
+- What are the differences between HTTP/1, HTTP/2, and HTTP/3?
+- Why does WebSocket exist?
+- Why is gRPC fast?
 
-- **Pingora**, a Rust proxy built to replace NGINX. It handles over a trillion requests a day using roughly a third of the CPU and memory, largely by sharing connections across threads — one large customer's origin connection reuse jumped from ~87% to ~99.9%.
-- **Tiered Cache**, which splits data centers into _lower tiers_ (near users) and _upper tiers_ (near origins). A lower-tier miss asks an upper tier before anyone goes to origin, raising hit ratio and collapsing origin connections. On top of this, **Cache Reserve** parks long-tail content in R2 object storage for 30 days, and the new cache layer does asynchronous **stale-while-revalidate** — serving stale content instantly while refreshing in the background.
-- How we built Pingora — [https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/](https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/)
-- Tiered Cache docs — [https://developers.cloudflare.com/cache/how-to/tiered-cache/](https://developers.cloudflare.com/cache/how-to/tiered-cache/)
-- Cache Reserve — [https://blog.cloudflare.com/cache-reserve-open-beta/](https://blog.cloudflare.com/cache-reserve-open-beta/)
+### Georgia Tech Computer Networking (Optional)
 
-### Vercel / Next.js — ISR: caching at the application layer
+Search on YouTube:
 
-**Incremental Static Regeneration (ISR)** pushes CDN-style caching up into the framework — the stale-while-revalidate pattern made first-class. A visitor gets the cached page instantly while Vercel regenerates it in the background, either on a timer or on demand. Two invalidation strategies are worth comparing:
+```
+Computer Networking Georgia Tech
+```
 
-- **Time-based** (`revalidate: 3600`) — dead simple, but content can be stale for up to the interval.
-- **On-demand** (`revalidateTag` / `revalidatePath`) — tag your data, then fire a webhook from your CMS to invalidate exactly the affected pages. Near-instant and atomic, at the cost of wiring up a trigger.
-
-Because Vercel knows which paths are cacheable _before_ the first request, it can also do request collapsing, ~300 ms global purges, and instant rollbacks. You can watch it work via the `x-nextjs-cache` header (`HIT` / `STALE` / `MISS` / `REVALIDATED`).
-
-- Vercel ISR docs — [https://vercel.com/docs/incremental-static-regeneration](https://vercel.com/docs/incremental-static-regeneration)
-- Next.js ISR guide — [https://nextjs.org/docs/app/guides/incremental-static-regeneration](https://nextjs.org/docs/app/guides/incremental-static-regeneration)
-
-> **The pattern across all three:** push vs. pull, a high cache hit ratio, tiered/origin-shielding topologies, and stale-while-revalidate keep reappearing. Learn them once and you'll spot them everywhere — including in system-design interviews.
+More theoretical and systematic — a good supplement.
 
 ---
 
-## CDN Provider Comparison
+## Phase 3: Databases (2 weeks)
 
-|Provider|Type / Approach|Core Strength|Typical Use Case|Free Tier|Website|
-|---|---|---|---|---|---|
-|**Cloudflare**|Full edge platform (CDN + DNS + security + edge compute)|Easy setup, strong security, global Anycast network|Startups, SaaS, general web apps|Generous free plan|[cloudflare.com](https://www.cloudflare.com/)|
-|**AWS CloudFront**|AWS-native CDN, integrated with the AWS ecosystem|Deep AWS integration (S3, EC2, Lambda)|Enterprise AWS architectures|Limited free tier|[aws.amazon.com/cloudfront](https://aws.amazon.com/cloudfront/)|
-|**Fastly**|Real-time edge CDN|Near-instant cache invalidation + API-driven control|High-frequency dynamic content, APIs|Trial credit|[fastly.com](https://www.fastly.com/)|
-|**Akamai**|Enterprise-grade global CDN|Largest, most mature global network|Banks, governments, Fortune 500|Sales-led (no self-serve free tier)|[akamai.com](https://www.akamai.com/)|
-|**Vercel**|Frontend-optimized CDN (built into the platform)|Zero-config, optimized for React / Next.js|Frontend apps, SSR/SSG sites|Free Hobby tier|[vercel.com](https://vercel.com/)|
+### ⭐ CMU 15-445 (Must watch)
+
+Search on YouTube:
+
+```
+CMU 15-445 Database Systems
+```
+
+**Topics:**
+
+- Storage engines and the buffer pool
+- B+ trees and indexing
+- Transactions
+- Multi-version concurrency control (MVCC)
+- Write-ahead logging (WAL) and crash recovery
+
+**Questions you should be able to answer afterwards:**
+
+- Why is MySQL fast?
+- What's the difference between PostgreSQL and MySQL?
+- Why is Redis fast?
+- Why is Elasticsearch a poor fit for transactions?
 
 ---
 
-## How to Choose
+## Phase 4: Distributed Systems (2–3 weeks)
 
-A quick decision guide:
+### ⭐ MIT 6.824 (Legendary course)
 
-- **Building a general web app or SaaS and want one tool for CDN + DNS + security?** → Cloudflare.
-- **Already all-in on AWS?** → CloudFront, for the native S3/Lambda integration.
-- **Need real-time, programmatic control over caching for APIs or dynamic content?** → Fastly.
-- **A large enterprise with strict compliance and global scale needs?** → Akamai.
-- **Shipping a Next.js / React frontend?** → Vercel, for the zero-config experience.
+Search on YouTube:
 
-For most side projects and startups, **Cloudflare's free tier is the pragmatic starting point** — you get a real CDN, DNS, and basic DDoS protection without touching a credit card, and you can grow into edge compute later.
+```
+MIT 6.824 Distributed Systems
+```
+
+**Key topics:**
+
+- MapReduce and GFS
+- Replication and fault tolerance
+- Raft and consensus
+
+> Skip the labs — the lectures alone are enough for this roadmap.
+
+**Questions you should be able to answer afterwards:**
+
+- How does leader election work?
+- What is consistency, and how should you think about the CAP theorem?
+- Why did Raft become more popular than Paxos?
+
+### CMU Distributed Systems (Optional)
+
+Search on YouTube:
+
+```
+CMU Distributed Systems
+```
+
+More industry-oriented — a good supplement.
 
 ---
 
-_Key takeaways: a CDN cuts latency by serving from the edge, shields your origin from load, and increasingly does double duty as a security and edge-compute layer. The metric that matters most is your cache hit ratio._
+## Phase 5: System Design (Ongoing)
+
+### ByteByteGo
+
+Search on YouTube:
+
+```
+ByteByteGo
+```
+
+**Covers:** Redis, Kafka, CDNs, chat systems, Uber, YouTube, URL shorteners, and other classic design case studies.
+
+Each episode is about 20 minutes — perfect for one a day.
+
+### Gaurav Sen
+
+Search on YouTube:
+
+```
+Gaurav Sen
+```
+
+Deep dives into large-scale system design: Netflix, WhatsApp, YouTube, Uber.
+
+---
+
+## Phase 6: Linux Basics
+
+### MIT Missing Semester
+
+Search on YouTube:
+
+```
+MIT Missing Semester
+```
+
+**Topics:** Linux, shell, Git, SSH, Vim.
+
+Watch the whole series — these are tools you'll use every single day.
+
+---
+
+## Phase 7: Docker & Kubernetes
+
+### TechWorld with Nana
+
+Search on YouTube:
+
+```
+TechWorld with Nana
+```
+
+**Topics:** Docker, Kubernetes, Helm, CI/CD.
+
+A great entry point into cloud native.
+
+---
+
+## Phase 8: Backend Internals (Ongoing)
+
+### ⭐ Hussein Nasser (Highly recommended)
+
+Search on YouTube:
+
+```
+Hussein Nasser
+```
+
+**Recommended topics:** how Redis, Kafka, PostgreSQL, WebSocket, gRPC, Nginx, CDNs, load balancers, TLS, and QUIC work under the hood.
+
+**Why it's great:**
+
+- Episodes run 10–20 minutes
+- Ideal for filling fundamentals gaps while working full-time
+- Ties networking, databases, and system design together
+
+---
+
+## Suggested Study Order
+
+**Weeks 1–3:**
+
+1. Berkeley CS162
+2. Stanford CS144
+
+**Weeks 4–6:**
+
+3. CMU 15-445
+4. MIT 6.824
+
+**Ongoing:**
+
+- Daily: 1 Hussein Nasser episode + 1 ByteByteGo (or Gaurav Sen) episode
+- Weekly: 1 Docker / Kubernetes video
+
+---
+
+## Course Summary
+
+| Rating | Course / Channel | Area |
+|--------|-----------------|------|
+| ⭐⭐⭐⭐⭐ | Berkeley CS162 | Operating systems |
+| ⭐⭐⭐⭐⭐ | Stanford CS144 | Computer networking |
+| ⭐⭐⭐⭐⭐ | CMU 15-445 | Databases |
+| ⭐⭐⭐⭐⭐ | MIT 6.824 | Distributed systems |
+| ⭐⭐⭐⭐⭐ | Hussein Nasser | Backend internals |
+| ⭐⭐⭐⭐☆ | ByteByteGo | System design |
+| ⭐⭐⭐⭐☆ | Gaurav Sen | System design |
+| ⭐⭐⭐⭐☆ | TechWorld with Nana | Docker / Kubernetes |
+| ⭐⭐⭐⭐☆ | MIT Missing Semester | Linux |
+| ⭐⭐⭐⭐☆ | MIT 6.S081 | Operating systems (advanced) |
+
+---
+
+## Study Principle: Learn With Questions
+
+For every concept you learn, try to explain a real-world system with it:
+
+| Concept | Question to answer |
+|---------|-------------------|
+| Context switching | Why are Go's goroutines so cheap to switch? |
+| TCP | Why is gRPC fast? |
+| Page cache | Why doesn't Redis rely on the page cache? |
+| Raft | Why does Kubernetes use etcd? |
+| MVCC | Why can PostgreSQL handle high concurrency? |
+
+---
+
+## The End Goal
+
+Be able to explain the design of a complex system (ChatGPT, Redis, Kafka, Kubernetes) from the full stack of fundamentals — **operating systems → networking → databases → distributed systems → system design** — instead of stopping at the API level.
